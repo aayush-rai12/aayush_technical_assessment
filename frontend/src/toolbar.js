@@ -50,7 +50,7 @@ export const PipelineToolbar = () => (
   <div className="toolbar">
     <div className="toolbar__brand">
       <span className="toolbar__logo" style={{display: 'flex', color: '#a78bfa'}}><Zap size={22} fill="currentColor" /></span>
-      <span className="toolbar__title">Aayush's VectorShift</span>
+      <span className="toolbar__title">VectorShift-Aayush</span>
     </div>
 
     <div className="toolbar__groups">
