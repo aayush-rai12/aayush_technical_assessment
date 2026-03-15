@@ -29,13 +29,13 @@ export const SubmitButton = () => {
       const { num_nodes, num_edges, is_dag } = data;
 
       alert(
-        `📊 Pipeline Analysis\n\n` +
+        `Pipeline Analysis\n\n` +
         `Nodes:  ${num_nodes}\n` +
         `Edges:  ${num_edges}\n` +
-        `Is DAG: ${is_dag ? '✅ Yes' : '❌ No (contains a cycle)'}`
+        `Is DAG: ${is_dag ? 'Yes' : 'No (contains a cycle)'}`
       );
     } catch (err) {
-      alert(`❌ Failed to reach backend.\n\n${err.message}\n\nMake sure the backend is running:\nuvicorn main:app --reload`);
+      alert(`Failed to reach backend.\n\n${err.message}\n\nMake sure the backend is running:\nuvicorn main:app --reload`);
     }
   };
 
