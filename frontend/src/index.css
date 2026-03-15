@@ -1,0 +1,63 @@
+/* index.css — global dark theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f0f1c;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ReactFlow canvas background override */
+.react-flow__renderer {
+  background: #0f0f1c;
+}
+
+.react-flow__edge-path {
+  stroke: rgba(139, 92, 246, 0.6) !important;
+  stroke-width: 2 !important;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+@keyframes dashdraw {
+  to { stroke-dashoffset: -10; }
+}
+
+/* Selection box */
+.react-flow__selection {
+  background: rgba(139, 92, 246, 0.08) !important;
+  border: 1px solid rgba(139, 92, 246, 0.4) !important;
+}
+
+.react-flow__controls-button {
+  background: #1e1e2e !important;
+  color: #94a3b8 !important;
+  border-color: rgba(139,92,246,0.2) !important;
+}
+
+.react-flow__controls-button:hover {
+  color: #e2e8f0 !important;
+  background: rgba(139,92,246,0.15) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139,92,246,0.5); }

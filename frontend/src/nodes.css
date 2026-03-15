@@ -1,0 +1,167 @@
+/* nodes.css — shared styles for all pipeline nodes */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --node-bg: #1e1e2e;
+  --node-border: rgba(139, 92, 246, 0.35);
+  --node-border-hover: rgba(139, 92, 246, 0.75);
+  --node-header-bg: rgba(139, 92, 246, 0.18);
+  --node-radius: 12px;
+  --node-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  --node-shadow-hover: 0 8px 32px rgba(139, 92, 246, 0.3);
+  --node-min-width: 210px;
+
+  --accent: #8b5cf6;
+  --accent-light: #a78bfa;
+  --accent-2: #06b6d4;
+  --accent-ok: #10b981;
+  --accent-warn: #f59e0b;
+  --accent-err: #ef4444;
+
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --handle-size: 11px;
+  --handle-input-color: #06b6d4;
+  --handle-output-color: #8b5cf6;
+
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-border-focus: rgba(139, 92, 246, 0.6);
+  --input-radius: 7px;
+}
+
+/* ─── Base Node Card ────────────────────────────────────────── */
+.base-node {
+  font-family: 'Inter', sans-serif;
+  min-width: var(--node-min-width);
+  background: var(--node-bg);
+  border: 1.5px solid var(--node-border);
+  border-radius: var(--node-radius);
+  box-shadow: var(--node-shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.base-node:hover {
+  border-color: var(--node-border-hover);
+  box-shadow: var(--node-shadow-hover);
+  transform: translateY(-1px);
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.base-node__header {
+  background: var(--node-header-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--node-radius) var(--node-radius) 0 0;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.base-node__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+
+/* ─── Body ───────────────────────────────────────────────────── */
+.base-node__body {
+  padding: 10px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── Field Rows ─────────────────────────────────────────────── */
+.node-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.node-field label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.node-field input,
+.node-field select,
+.node-field textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: 5px 9px;
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.node-field input:focus,
+.node-field select:focus,
+.node-field textarea:focus {
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.18);
+}
+
+.node-field select option {
+  background: #1e1e2e;
+}
+
+/* ─── Pill / Info Text ────────────────────────────────────────── */
+.node-info {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* ─── Handle Dots ─────────────────────────────────────────────── */
+.base-node__handle {
+  width: var(--handle-size) !important;
+  height: var(--handle-size) !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--node-bg) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.base-node__handle:hover {
+  transform: scale(1.4) !important;
+  box-shadow: 0 0 8px currentColor !important;
+}
+
+.base-node__handle--input {
+  background: var(--handle-input-color) !important;
+  left: -6px !important;
+}
+
+.base-node__handle--output {
+  background: var(--handle-output-color) !important;
+  right: -6px !important;
+}
+
+/* ─── Per-node accent colours ────────────────────────────────── */
+.base-node--input    { --node-border: rgba(6,182,212,0.4);  --node-header-bg: rgba(6,182,212,0.12);  --accent-light: #67e8f9; }
+.base-node--output   { --node-border: rgba(16,185,129,0.4); --node-header-bg: rgba(16,185,129,0.12); --accent-light: #6ee7b7; }
+.base-node--llm      { --node-border: rgba(139,92,246,0.5); --node-header-bg: rgba(139,92,246,0.18); --accent-light: #c4b5fd; }
+.base-node--text     { --node-border: rgba(245,158,11,0.4); --node-header-bg: rgba(245,158,11,0.12); --accent-light: #fcd34d; }
+.base-node--filter   { --node-border: rgba(239,68,68,0.4);  --node-header-bg: rgba(239,68,68,0.12);  --accent-light: #fca5a5; }
+.base-node--note     { --node-border: rgba(234,179,8,0.4);  --node-header-bg: rgba(234,179,8,0.12);  --accent-light: #fde047; }
+.base-node--api      { --node-border: rgba(6,182,212,0.5);  --node-header-bg: rgba(6,182,212,0.15);  --accent-light: #67e8f9; }
+.base-node--math     { --node-border: rgba(168,85,247,0.5); --node-header-bg: rgba(168,85,247,0.15); --accent-light: #d8b4fe; }
+.base-node--timer    { --node-border: rgba(249,115,22,0.4); --node-header-bg: rgba(249,115,22,0.12); --accent-light: #fdba74; }
