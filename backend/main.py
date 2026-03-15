@@ -10,7 +10,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://aayush-technical-assessment.vercel.app"
+        "https://aayush-technical-assessment.vercel.app/"
     ],
     allow_credentials=True,
     allow_methods=["*"],
